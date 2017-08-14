@@ -1,5 +1,9 @@
 # Somleng::TwilioHttpClient
 
+[![Build Status](https://travis-ci.org/dwilkie/somleng-twilio_http_client.svg?branch=master)](https://travis-ci.org/dwilkie/somleng-twilio_http_client)
+[![Test Coverage](https://codeclimate.com/github/dwilkie/somleng-twilio_http_client/badges/coverage.svg)](https://codeclimate.com/github/dwilkie/somleng-twilio_http_client/coverage)
+[![Code Climate](https://codeclimate.com/github/dwilkie/somleng-twilio_http_client/badges/gpa.svg)](https://codeclimate.com/github/dwilkie/somleng-twilio_http_client)
+
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/somleng/twilio_http_client`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
