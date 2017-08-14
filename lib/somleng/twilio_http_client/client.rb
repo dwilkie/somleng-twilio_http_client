@@ -56,6 +56,7 @@ class Somleng::TwilioHttpClient::Client
     request_url = options[:request_url] || self.request_url
     request_method = sanitize_request_method(options[:request_method] || self.request_method)
     call_status = options[:call_status] || self.call_status
+    custom_body = options[:body] || {}
 
     basic_auth, sanitized_request_url = extract_auth(request_url)
     self.last_request_url = sanitized_request_url
@@ -64,7 +65,7 @@ class Somleng::TwilioHttpClient::Client
 
     request_body = {
       "CallStatus" => CALL_STATUSES[call_status],
-    }.merge(build_request_body)
+    }.merge(build_request_body).merge(custom_body)
 
     headers = build_twilio_signature_header(sanitized_request_url, request_body)
 

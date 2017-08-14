@@ -294,6 +294,14 @@ RSpec.describe Somleng::TwilioHttpClient::Client do
     end
 
     context "HTTP Body" do
+      def execute_request_options
+        super.merge(
+          :body => {
+            "CustomParam" => "foo"
+          }
+        )
+      end
+
       def assert_request!
         expect(http_request_params["ApiVersion"]).to eq("somleng-twilio_http_client-#{Somleng::TwilioHttpClient::VERSION}")
         expect(http_request_params).to have_key("CallStatus")
@@ -302,6 +310,7 @@ RSpec.describe Somleng::TwilioHttpClient::Client do
         expect(http_request_params["From"]).to eq(call_from)
         expect(http_request_params["To"]).to eq(call_to)
         expect(http_request_params["CallSid"]).to eq(call_sid)
+        expect(http_request_params["CustomParam"]).to eq("foo")
         if account_sid
           expect(http_request_params["AccountSid"]).to eq(account_sid)
         else
