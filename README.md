@@ -4,9 +4,7 @@
 [![Test Coverage](https://codeclimate.com/github/dwilkie/somleng-twilio_http_client/badges/coverage.svg)](https://codeclimate.com/github/dwilkie/somleng-twilio_http_client/coverage)
 [![Code Climate](https://codeclimate.com/github/dwilkie/somleng-twilio_http_client/badges/gpa.svg)](https://codeclimate.com/github/dwilkie/somleng-twilio_http_client)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/somleng/twilio_http_client`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+[Somleng::TwilioHttpClient](https://github.com/dwilkie/somleng-twilio_http_client) is an Open Source implementation of [Twilio's HTTP Client](https://www.twilio.com/docs/api/twiml/twilio_request). The client is used in [Twilreapi](https://github.com/dwilkie/twilreapi) (An Open Source Implementation of [Twilio's REST API](https://www.twilio.com/docs/api/rest)) as well as in [Adhearsion-Twilio](https://github.com/dwilkie/adhearsion-twilio) (An [Adhearsion](https://github.com/adhearsion/adhearsion) plugin which interprets [TwiML](https://www.twilio.com/docs/api/twiml)).
 
 ## Installation
 
@@ -18,15 +16,29 @@ gem 'somleng-twilio_http_client'
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install somleng-twilio_http_client
+```
+$ gem install somleng-twilio_http_client
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+  $ ./bin/console
+```
+
+```ruby
+  require 'somleng/twilio_http_client/client'
+  client = Somleng::TwilioHttpClient::Client.new
+  client.request_url = "https://requestb.in/18vcevd1"
+  client.auth_token = "some-auth-token"
+  client.execute_request!
+```
 
 ## Development
 
@@ -36,7 +48,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/somleng-twilio_http_client.
+Bug reports and pull requests are welcome on GitHub at https://github.com/dwilkie/somleng-twilio_http_client.
 
 ## License
 
