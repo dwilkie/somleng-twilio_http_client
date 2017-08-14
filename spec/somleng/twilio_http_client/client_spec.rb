@@ -151,9 +151,15 @@ RSpec.describe Somleng::TwilioHttpClient::Client do
       execute_request!
     end
 
-    def execute_request!
-      subject.execute_request!
+    def execute_request_options
+      {}
     end
+
+    def execute_request!
+      subject.execute_request!(execute_request_options)
+    end
+
+    let(:actual_call_status) { http_request_params["CallStatus"] }
 
     context "invalid request method specified" do
       let(:request_method) { "HEAD" }
@@ -164,9 +170,32 @@ RSpec.describe Somleng::TwilioHttpClient::Client do
       it { expect { execute_request! }.to raise_error(RuntimeError, /#{described_class::VALID_REQUEST_METHODS}/) }
     end
 
-    context "CallStatus" do
-      let(:actual_call_status) { http_request_params["CallStatus"] }
+    context "overrides" do
+      let(:overridden_request_url) { "https://overridden.com/test.xml" }
+      let(:overridden_request_method) { "GET" }
 
+      def execute_request_options
+        super.merge(
+          :request_url => overridden_request_url,
+          :request_method => overridden_request_method,
+          :call_status => :busy
+        )
+      end
+
+      let(:asserted_request_url) { overridden_request_url }
+      let(:asserted_request_method) { overridden_request_method.downcase.to_sym }
+
+      def assert_request!
+        expect(http_request.method).to eq(asserted_request_method)
+        expect(actual_call_status).to eq("busy")
+        expect(subject.request_url).to eq(request_url)
+        expect(subject.request_method).to eq(request_method.downcase)
+      end
+
+      it { assert_request! }
+    end
+
+    context "CallStatus" do
       def assert_request!
         expect(actual_call_status).to eq(asserted_call_status)
       end
@@ -265,6 +294,7 @@ RSpec.describe Somleng::TwilioHttpClient::Client do
 
     context "HTTP Body" do
       def assert_request!
+        expect(http_request_params["ApiVersion"]).to eq("somleng-twilio_http_client-#{Somleng::TwilioHttpClient::VERSION}")
         expect(http_request_params).to have_key("CallStatus")
         expect(http_request_params).to have_key("Direction")
         expect(http_request_params).to have_key("ApiVersion")

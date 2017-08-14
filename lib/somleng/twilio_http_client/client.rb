@@ -52,8 +52,12 @@ class Somleng::TwilioHttpClient::Client
     self.logger = options[:logger]
   end
 
-  def execute_request!
-    basic_auth, sanitized_request_url = extract_auth
+  def execute_request!(options = {})
+    request_url = options[:request_url] || self.request_url
+    request_method = sanitize_request_method(options[:request_method] || self.request_method)
+    call_status = options[:call_status] || self.call_status
+
+    basic_auth, sanitized_request_url = extract_auth(request_url)
     self.last_request_url = sanitized_request_url
 
     validate_request_method!
@@ -80,20 +84,24 @@ class Somleng::TwilioHttpClient::Client
     ).body
   end
 
+  def request_method
+    sanitize_request_method(@request_method || DEFAULT_REQUEST_METHOD)
+  end
+
+  def call_status
+    @call_status || DEFAULT_CALL_STATUS
+  end
+
   private
+
+  def sanitize_request_method(value)
+    value.to_s.downcase
+  end
 
   def validate_request_method!
     raise(
       "#request_method must be one of either: #{VALID_REQUEST_METHODS}"
     ) if !VALID_REQUEST_METHODS.include?(request_method)
-  end
-
-  def request_method
-    (@request_method || DEFAULT_REQUEST_METHOD).to_s.downcase
-  end
-
-  def call_status
-    @call_status || DEFAULT_CALL_STATUS
   end
 
   def log(*args)
@@ -108,12 +116,12 @@ class Somleng::TwilioHttpClient::Client
     @twilio_request_validator ||= Somleng::TwilioHttpClient::Util::RequestValidator.new(auth_token)
   end
 
-  def extract_auth
-    Somleng::TwilioHttpClient::Util::Url.new(request_url).extract_auth
+  def extract_auth(url)
+    Somleng::TwilioHttpClient::Util::Url.new(url).extract_auth
   end
 
   def api_version
-    "somleng-client-#{Somleng::TwilioHttpClient::VERSION}"
+    "somleng-twilio_http_client-#{Somleng::TwilioHttpClient::VERSION}"
   end
 
   def twilio_call_direction
