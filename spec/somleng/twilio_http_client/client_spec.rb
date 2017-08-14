@@ -190,6 +190,7 @@ RSpec.describe Somleng::TwilioHttpClient::Client do
         expect(actual_call_status).to eq("busy")
         expect(subject.request_url).to eq(request_url)
         expect(subject.request_method).to eq(request_method.downcase)
+        expect(subject.last_request_url).to eq(overridden_request_url)
       end
 
       it { assert_request! }
