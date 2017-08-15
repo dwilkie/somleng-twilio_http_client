@@ -33,11 +33,13 @@ $ gem install somleng-twilio_http_client
 ```
 
 ```ruby
-  require 'somleng/twilio_http_client/client'
-  client = Somleng::TwilioHttpClient::Client.new
-  client.request_url = "https://requestb.in/18vcevd1"
-  client.auth_token = "some-auth-token"
-  client.execute_request!
+  require 'somleng/twilio_http_client/request'
+  request = Somleng::TwilioHttpClient::Request.new
+  request.request_url = "https://hookb.in/E7Rgk2lP"
+  request.request_method = "POST"
+  request.auth_token = "some-auth-token"
+  response = request.execute!
+  response.body
 ```
 
 ## Development
