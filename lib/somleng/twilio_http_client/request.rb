@@ -39,7 +39,7 @@ class Somleng::TwilioHttpClient::Request
     sanitized_request_method = sanitize_request_method(request_method)
     validate_request_method!(sanitized_request_method)
 
-    request_bodylib/somleng/twilio_http_client/client.rb = default_request_body.merge(body)
+    request_body = default_request_body.merge(body)
 
     headers = build_twilio_signature_header(
       sanitized_request_url, request_body
