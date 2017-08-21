@@ -1,10 +1,10 @@
 # Somleng::TwilioHttpClient
 
-[![Build Status](https://travis-ci.org/dwilkie/somleng-twilio_http_client.svg?branch=master)](https://travis-ci.org/dwilkie/somleng-twilio_http_client)
-[![Test Coverage](https://codeclimate.com/github/dwilkie/somleng-twilio_http_client/badges/coverage.svg)](https://codeclimate.com/github/dwilkie/somleng-twilio_http_client/coverage)
-[![Code Climate](https://codeclimate.com/github/dwilkie/somleng-twilio_http_client/badges/gpa.svg)](https://codeclimate.com/github/dwilkie/somleng-twilio_http_client)
+[![Build Status](https://travis-ci.org/somleng/somleng-twilio_http_client.svg?branch=master)](https://travis-ci.org/somleng/somleng-twilio_http_client)
+[![Test Coverage](https://codeclimate.com/github/somleng/somleng-twilio_http_client/badges/coverage.svg)](https://codeclimate.com/github/somleng/somleng-twilio_http_client/coverage)
+[![Code Climate](https://codeclimate.com/github/somleng/somleng-twilio_http_client/badges/gpa.svg)](https://codeclimate.com/github/somleng/somleng-twilio_http_client)
 
-[Somleng::TwilioHttpClient](https://github.com/dwilkie/somleng-twilio_http_client) is an Open Source implementation of [Twilio's HTTP Client](https://www.twilio.com/docs/api/twiml/twilio_request). The client is used in [Twilreapi](https://github.com/dwilkie/twilreapi) (An Open Source Implementation of [Twilio's REST API](https://www.twilio.com/docs/api/rest)) as well as in [Adhearsion-Twilio](https://github.com/dwilkie/adhearsion-twilio) (An [Adhearsion](https://github.com/adhearsion/adhearsion) plugin which interprets [TwiML](https://www.twilio.com/docs/api/twiml)).
+[Somleng::TwilioHttpClient](https://github.com/somleng/somleng-twilio_http_client) is an Open Source implementation of [Twilio's HTTP Client](https://www.twilio.com/docs/api/twiml/twilio_request). The client is used in [Twilreapi](https://github.com/somleng/twilreapi) (An Open Source Implementation of [Twilio's REST API](https://www.twilio.com/docs/api/rest)) as well as in [Adhearsion-Twilio](https://github.com/somleng/adhearsion-twilio) (An [Adhearsion](https://github.com/adhearsion/adhearsion) plugin which interprets [TwiML](https://www.twilio.com/docs/api/twiml)).
 
 ## Installation
 
@@ -50,7 +50,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/dwilkie/somleng-twilio_http_client.
+Bug reports and pull requests are welcome on GitHub at https://github.com/somleng/somleng-twilio_http_client.
 
 ## License
 
