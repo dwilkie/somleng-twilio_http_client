@@ -166,7 +166,7 @@ RSpec.describe Somleng::TwilioHttpClient::Request do
       it { expect { subject.execute! }.to raise_error(RuntimeError, /#{described_class::VALID_REQUEST_METHODS}/) }
     end
 
-    context "Authorization Header", :focus do
+    context "Authorization Header" do
       context "without HTTP Basic Auth specified in the URL" do
         let(:request_url) { "https://voice-request.com:1234/twiml.xml" }
 
